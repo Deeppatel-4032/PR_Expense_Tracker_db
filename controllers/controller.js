@@ -27,7 +27,7 @@ const expenseCon = async (req, res) => {
 
 const editCon = async (req, res) => {
 
-    const {id}= req.params; 
+    const {id} = req.params; 
     console.log("editeID", id);
 
     const editeData = await Modeles.findOne({ _id: id });
@@ -41,15 +41,23 @@ const updateCon = async (req, res) => {
     
     const {id} = req.params;
 
+    console.log("updateID", id);    
+
     const updateData = await Modeles.findByIdAndUpdate(
-        {_id : id}, 
-        {type : req.body.type,
-        category : req.body.category,
-        description : req.body.description,
-        date : req.body.date,
-        amount : req.body.amount
+        {
+            _id : id
+        }, 
+        {
+            type : req.body.type,
+            category : req.body.category,
+            description : req.body.description,
+            date : req.body.date,
+            amount : req.body.amount
         },
-        {new : true});
+        {
+            new : true
+        }
+    );
 
     console.log("updateData", updateData);
         
